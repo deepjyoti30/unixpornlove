@@ -27,8 +27,12 @@
     font-family: 'Marat-Sans';
 }
 
-body {
+nav {
     @extend .lineto-medium;
+}
+
+body {
+    @extend .marat-sans;
     background: #F5F5F5;
 }
 

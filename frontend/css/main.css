@@ -13,10 +13,10 @@
 .lineto-black, b {
   font-family: 'Lineto-black'; }
 
-.lineto-medium, body {
+.lineto-medium, nav {
   font-family: 'Lineto-medium'; }
 
-.marat-sans, #top-post .container-fluid {
+.marat-sans, #top-post .container-fluid, body {
   font-family: 'Marat-Sans'; }
 
 body {
