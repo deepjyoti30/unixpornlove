@@ -26,7 +26,7 @@ var fetchTrending = new Vue({
         },
         getFullUri(permalink) {
             return "https://www.reddit.com/" + permalink
-        }
+        },
     },
     computed: {
         getPosts: function() {
@@ -39,5 +39,15 @@ var fetchTrending = new Vue({
     },
     mounted() {
         this.fetchData()
+    },
+    updated() {
+        // Initialize slick
+        $('#cards-container').slick({
+            infinite: false,
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            variableWidth: true,
+            draggable: false
+        })
     }
 })

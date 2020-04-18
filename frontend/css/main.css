@@ -56,10 +56,10 @@ body {
     background: #30BEB0 !important; }
 
 .small-card {
-  width: 400px;
+  width: 300px;
   margin: 30px 10px; }
 
 .img-fluid-card {
-  width: 400px;
-  height: 300px;
+  width: 300px;
+  height: 200px;
   object-fit: cover; }
