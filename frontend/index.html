@@ -6,6 +6,10 @@
     <title>I love Unixporn</title>
     <!--Bootsrap CSS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+    <!--Slick Carousel-->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <!--Custom CSS-->
     <link rel="stylesheet" href="css/main.css"></link>
     <link rel="stylesheet" href="css/reddit.css">
 </head>
@@ -39,6 +43,57 @@
     <section id="trending">
         <div class="py-5 my-5 container-fluid px-5">
             <h1 class="display-4">Trending Posts</h1>
+            <div id="cards-container" class="py-5" data-slick='{"slidesToShow": 4, "slidesToScroll": 3}'>
+                <div id="card" class="bg-white small-card rounded-lg shadow">
+                    <img src="assets/temp2.jpg" alt="" class="img-fluid">
+                    <div id="details" class="pt-4 pb-3 px-3">
+                        <h4>[BSPWM] Minimal Machine</h4>
+                        <h5 class="text-dark"><span class="upvote-color">342</span> upvotes <span class="text-muted">in</span> 19 hours &nbsp;&bullet;&nbsp;u/nana412</h5>
+                    </div>
+                </div>
+                <div id="card" class="bg-white small-card rounded-lg shadow">
+                    <img src="assets/temp2.jpg" alt="" class="img-fluid">
+                    <div id="details" class="pt-4 pb-3 px-3">
+                        <h4>[BSPWM] Minimal Machine</h4>
+                        <h5 class="text-dark"><span class="upvote-color">342</span> upvotes <span class="text-muted">in</span> 19 hours &nbsp;&bullet;&nbsp;u/nana412</h5>
+                    </div>
+                </div>
+                <div id="card" class="bg-white small-card rounded-lg shadow">
+                    <img src="assets/temp2.jpg" alt="" class="img-fluid">
+                    <div id="details" class="pt-4 pb-3 px-3">
+                        <h4>[BSPWM] Minimal Machine</h4>
+                        <h5 class="text-dark"><span class="upvote-color">342</span> upvotes <span class="text-muted">in</span> 19 hours &nbsp;&bullet;&nbsp;u/nana412</h5>
+                    </div>
+                </div>
+                <div id="card" class="bg-white small-card rounded-lg shadow">
+                    <img src="assets/temp2.jpg" alt="" class="img-fluid">
+                    <div id="details" class="pt-4 pb-3 px-3">
+                        <h4>[BSPWM] Minimal Machine</h4>
+                        <h5 class="text-dark"><span class="upvote-color">342</span> upvotes <span class="text-muted">in</span> 19 hours &nbsp;&bullet;&nbsp;u/nana412</h5>
+                    </div>
+                </div>
+                <div id="card" class="bg-white small-card rounded-lg shadow">
+                    <img src="assets/temp2.jpg" alt="" class="img-fluid">
+                    <div id="details" class="pt-4 pb-3 px-3">
+                        <h4>[BSPWM] Minimal Machine</h4>
+                        <h5 class="text-dark"><span class="upvote-color">342</span> upvotes <span class="text-muted">in</span> 19 hours &nbsp;&bullet;&nbsp;u/nana412</h5>
+                    </div>
+                </div>
+                <div id="card" class="bg-white small-card rounded-lg shadow">
+                    <img src="assets/temp2.jpg" alt="" class="img-fluid">
+                    <div id="details" class="pt-4 pb-3 px-3">
+                        <h4>[BSPWM] Minimal Machine</h4>
+                        <h5 class="text-dark"><span class="upvote-color">342</span> upvotes <span class="text-muted">in</span> 19 hours &nbsp;&bullet;&nbsp;u/nana412</h5>
+                    </div>
+                </div>
+                <div id="card" class="bg-white small-card rounded-lg shadow">
+                    <img src="assets/temp2.jpg" alt="" class="img-fluid">
+                    <div id="details" class="pt-4 pb-3 px-3">
+                        <h4>[BSPWM] Minimal Machine</h4>
+                        <h5 class="text-dark"><span class="upvote-color">342</span> upvotes <span class="text-muted">in</span> 19 hours &nbsp;&bullet;&nbsp;u/nana412</h5>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <!-- JQuery -->
@@ -46,10 +101,12 @@
     <!--Bootstrap JS files-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
-    <!--Medium Zoom-->
-    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.5/dist/medium-zoom.min.js"></script>
+    <!--Slick-->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
-        mediumZoom('[data-zoomable]')
+        $('#cards-container').slick({
+            infinite: false,
+        });
     </script>
 </body>
 </html>

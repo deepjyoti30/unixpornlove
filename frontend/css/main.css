@@ -54,3 +54,7 @@ body {
     opacity: 0.8; }
   .btn-light:focus, .btn-light:active {
     background: #30BEB0 !important; }
+
+.small-card {
+  width: 400px;
+  margin: 0 50px; }
