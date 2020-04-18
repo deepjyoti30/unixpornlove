@@ -58,3 +58,8 @@ body {
 .small-card {
   width: 400px;
   margin: 30px 10px; }
+
+.img-fluid-card {
+  width: 400px;
+  height: 300px;
+  object-fit: cover; }
