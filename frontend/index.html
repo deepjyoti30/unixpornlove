@@ -16,40 +16,50 @@
             <a class="navbar-brand" href="#">UnixPorn</a>
           </nav>
     </section>
-    <section id="top-post">
-        <div id="top-post-container" class="row container-fluid pt-5 px-4">
-            <div class="col-md-8">
-                <img src="assets/temp.jpg" alt="Top Post image" class="top-post-img rounded-xl shadow">
-            </div>
-            <div class="col-md-4">
-                <h1 class="display-3">Top Post</h1>
-                <div id="card-details" class="mt-5 py-4 px-4 bg-white rounded-xl shadow">
-                    <span id="flair" class="bg-screenshot">Screenshot</span>
-                    <h1 id="title" class="py-3">[Pantheon] Symphony</h1>
-                    <h4 class="text-dark">19 hours ago <span class="text-muted">by</span> u/droier412</h4>
-                    <h4 class="text-dark"><span class="upvote-color">786</span> upvotes &nbsp;&bullet;&nbsp; <span class="award-color">2</span> awards</h4>
-                    <div id="button-container" class="mt-5">
-                        <a href="">
-                            <button type="button" class="button btn-light shadow">check post</button>
-                        </a>
+    <section id="body">
+        <section id="top-post">
+            <div id="top-post-container" class="row container-fluid pt-5 px-4">
+                <div class="col-md-8">
+                    <img :src="getTopPost.data.url" alt="Top Post image" class="top-post-img rounded-xl shadow">
+                </div>
+                <div class="col-md-4">
+                    <h1 class="display-3">Top Post</h1>
+                    <div id="card-details" class="mt-5 py-4 px-4 bg-white rounded-xl shadow">
+                        <span id="flair" class="bg-screenshot">
+                            {{getTopPost.data.link_flair_text}}
+                        </span>
+                        <h1 id="title" class="py-3">{{getTopPost.data.title}}</h1>
+                        <h4 class="text-dark">
+                            19 hours ago <span class="text-muted">by</span> u/{{getTopPost.data.author}}
+                        </h4>
+                        <h4 class="text-dark">
+                            <span class="upvote-color">{{getTopPost.data.ups}}</span> upvotes 
+                            <span>
+                                &nbsp;&bullet;&nbsp;<span class="upvote-color">{{calcPercentage(getTopPost.data)}}%</span> upvoted
+                            </span>  
+                        <div id="button-container" class="mt-5">
+                            <a :href="getFullUri(getTopPost.data.permalink)">
+                                <button type="button" class="button btn-light shadow">check post</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section id="trending">
-        <div class="py-5 my-5 container-fluid px-5">
-            <h1 class="display-4">Trending Posts</h1>
-            <div class="py-5" id="cards-container">
-                <div id="card" class="bg-white small-card rounded-lg shadow" v-for="(post, id) in getPosts" :key="id">
-                    <img :src="post.data.url" alt="" class="img-fluid">
-                    <div id="details" class="pt-4 pb-3 px-3">
-                        <h4>{{post.data.title}}</h4>
-                        <h5 class="text-dark"><span class="upvote-color">{{post.data.ups}}</span> upvotes <span class="text-muted">in</span> 19 hours &nbsp;&bullet;&nbsp;u/{{post.data.author}}</h5>
+        </section>
+        <section id="trending">
+            <div class="py-5 my-5 container-fluid px-5">
+                <h1 class="display-4">Trending Posts</h1>
+                <div class="py-5" id="cards-container">
+                    <div id="card" class="bg-white small-card rounded-lg shadow" v-for="(post, id) in getPosts" :key="id">
+                        <img :src="post.data.url" alt="" class="img-fluid">
+                        <div id="details" class="pt-4 pb-3 px-3">
+                            <h4>{{post.data.title}}</h4>
+                            <h5 class="text-dark"><span class="upvote-color">{{post.data.ups}}</span> upvotes <span class="text-muted">in</span> 19 hours &nbsp;&bullet;&nbsp;u/{{post.data.author}}</h5>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </section>
     <!-- JQuery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
