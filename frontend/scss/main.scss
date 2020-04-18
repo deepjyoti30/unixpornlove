@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'Lineto-black';
+    src: url('../fonts/lineto-circular-black.woff') format('woff'),
+         url('../fonts/lineto-circular-black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Lineto-medium';
+    src: url('../fonts/lineto-circular-pro-medium.woff') format('woff'),
+         url('../fonts/lineto-circular-pro-medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "Marat-Sans";
+    src: url('../fonts/Marat\ Sans\ Regular.woff') format('woff');
+}
+
+.lineto-black {
+    font-family: 'Lineto-black';
+}
+
+.lineto-medium {
+    font-family: 'Lineto-medium';
+}
+
+.marat-sans {
+    font-family: 'Marat-Sans';
+}
+
+body {
+    @extend .lineto-medium;
+    background: #F5F5F5;
+}
+
+b {
+    @extend .lineto-black;
+}
+
+// Custom classes
+
+.top-post-img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.text-cyan {
+    color: #60BAAF;
+}
+
+.rounded-xl {
+    border-radius: 10px;
+}
+
+.rounded-xl-left {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+// Top Posts
+
+#top-post .container-fluid {
+    @extend .marat-sans;
+}
+
+// Button
+
+.button {
+    outline: none !important;
+    border: none !important;
+    padding: 8px 24px;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 35px;
+}
+
+.btn-light {
+    background: #30BEB0;
+    color: #121212;
+
+    &:hover {
+        background: #30BEB0;
+        opacity: 0.8;
+    }
+
+    &:focus, &:active {
+        background: #30BEB0 !important;
+    }
+}

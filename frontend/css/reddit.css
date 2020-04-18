@@ -1,0 +1,9 @@
+.bg-screenshot {
+  background: #FFD54F;
+  color: #000;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 15px; }
+
+.upvote-color, .award-color {
+  color: orangered; }
