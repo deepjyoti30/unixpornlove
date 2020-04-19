@@ -6,7 +6,9 @@ var fetchTrending = new Vue({
         topPost: null,
         userAgent: 'unixporn-love',
         topURL: 'https://www.reddit.com/r/unixporn/top/.json?count=20',
-        latestURL: 'https://www.reddit.com/r/unixporn/.json?sort=new'
+        latestURL: 'https://www.reddit.com/r/unixporn/.json?sort=new',
+        isLatestLoaded: false,
+        isTopLoaded: false,
     },
     methods: {
         fetchData: function() {
@@ -22,6 +24,9 @@ var fetchTrending = new Vue({
                     this.topPost = data[0]
                     data.splice(0, 1)
                     this.trendingPostsContainer = data
+
+                    // Change the loaded to true
+                    this.isTopLoaded = true
                 })
         },
         fetchLatest: function(){
@@ -38,6 +43,9 @@ var fetchTrending = new Vue({
                 let data = jsonData["data"]["children"]
                 data.splice(0, 1)
                 this.latestPostsContainer = data
+
+                // Change to loaded
+                this.isLatestLoaded = true
             })
         },
         calcPercentage(data) {
@@ -69,6 +77,12 @@ var fetchTrending = new Vue({
         getLatestPosts: function() {
             if (this.latestPostsContainer.length)
                 return this.latestPostsContainer
+        },
+        showTop: function() {
+            return this.isTopLoaded
+        },
+        showLatest: function() {
+            return this.isLatestLoaded
         }
     },
     mounted() {
