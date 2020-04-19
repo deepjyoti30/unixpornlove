@@ -123,7 +123,7 @@
                             <h5 class="text-dark"><span class="upvote-color">{{post.data.ups}}</span> upvotes &nbsp;&bullet;&nbsp;u/{{post.data.author}}</h5>
                         </div>
                         <div id="btn-container">
-                            <button type="button" class="btn-card-overlay btn-light shadow">
+                            <button type="button" class="btn-card-overlay btn-light shadow" @click="popup(id, 'latest')">
                                 More details
                             </button>
                         </div>

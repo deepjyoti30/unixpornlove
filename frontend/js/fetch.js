@@ -141,12 +141,16 @@ var fetchTrending = new Vue({
                 ]
             })
         },
-        showTrending(indexToShow) {
+        showModal(indexToShow, dataContainer) {
             /**
              * Show the data related to the post clickde on.
              */
+            // Put a check to see if index is valid
+            if (indexToShow > dataContainer.length - 1)
+                return false
+
             // Update the title
-            let container = this.trendingPostsContainer[indexToShow]["data"]
+            let container = dataContainer[indexToShow]["data"]
             this.modalTitle = container["title"]
             this.modalImgSrc = container["url"]
             this.modalUps = container["ups"]
@@ -169,17 +173,19 @@ var fetchTrending = new Vue({
              * accordingly.
              */
             // Build the title header
+            let ranking = -1
+            typeData == "trending" ? ranking = index + 2 : ranking = index + 1
             this.modalHeaderTitle = "Currently #"
-                                    + (index + 1)
+                                    + ranking
                                     + " in "
                                     + typeData[0].toUpperCase()
                                     + typeData.slice(1)
 
             if (typeData == "trending")
                 // Show trending's index'd data
-                this.showTrending(index)
+                this.showModal(index, this.trendingPostsContainer)
             else if (typeData == "latest")
-                this.showLatest(index)
+                this.showModal(index, this.latestPostsContainer)
         }
     },
     computed: {
