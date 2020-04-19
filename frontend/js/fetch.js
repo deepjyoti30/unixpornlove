@@ -62,6 +62,32 @@ var fetchTrending = new Vue({
                 slidesToScroll: 3,
                 variableWidth: true,
                 draggable: false,
+                responsive: [{
+
+                    breakpoint: 1024,
+                    settings: {
+                      slidesToShow: 5,
+                      slidesToScroll: 4,
+                    }
+              
+                  }, {
+              
+                    breakpoint: 830,
+                    settings: {
+                      slidesToShow: 4,
+                      slidesToScroll: 3,
+                    }
+              
+                  }, {
+              
+                    breakpoint: 411,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1
+                    }
+              
+                  }
+                ]
             })
         }
     },
