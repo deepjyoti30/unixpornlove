@@ -35,7 +35,8 @@
                         </span>
                         <h1 id="title" class="py-3">{{getTopPost.data.title}}</h1>
                         <h4 class="text-dark">
-                            19 hours ago <span class="text-muted">by</span> u/{{getTopPost.data.author}}
+                            {{getDiffHours(getTopPost.data.created_utc)}} ago 
+                            <span class="text-muted">by</span> u/{{getTopPost.data.author}}
                         </h4>
                         <h4 class="text-dark">
                             <span class="upvote-color">{{getTopPost.data.ups}}</span> upvotes 

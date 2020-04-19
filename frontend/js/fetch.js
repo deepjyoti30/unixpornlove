@@ -54,6 +54,50 @@ var fetchTrending = new Vue({
         getFullUri(permalink) {
             return "https://www.reddit.com/" + permalink
         },
+        makeReadable(differenceInHours) {
+            /**
+             * Make the passed time readable
+             * 
+             * The passed value will be in hours and we need to
+             * process it and accordingly return a day or hour(s)
+             * value.
+             */
+            differenceInHours = Math.floor(differenceInHours)
+
+            if (differenceInHours < 2) {
+                // Just return the hours if less than 24
+                return differenceInHours + " hour"
+            }
+            else if (differenceInHours < 24) {
+                // Return the hour but with a s in the 
+                // hour
+                return differenceInHours + " hours"
+            }
+            else if (differenceInHours < 48) {
+                // Return the value in terms of day
+                return (differenceInHours / 24) + " day"
+            }
+            else {
+                // Probably the value is greater than 2 days
+                return (differenceInHours / 24) + " days"
+            }
+        },
+        getDiffHours(passedUTC) {
+            /** Return the differnce in hours between the passed time
+             * and the current time.
+             *
+             * One assumption made is that a particular post cannot become
+             * a top post without being around for a while, so we'll 
+             * assume that this method never returns a value less than 1
+            */
+            createdTime = new Date(passedUTC * 1000)
+            currentTime = new Date()
+
+            differenceInHours = Math.abs(currentTime - createdTime) / 36e5
+
+            // Return the value in a readable format
+            return this.makeReadable(differenceInHours)
+        },
         initSlick: function(element) {
             // Initiate the slick containers
             $(element).not('.slick-initialized').slick({
