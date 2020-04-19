@@ -6,7 +6,7 @@ var fetchTrending = new Vue({
         topPost: null,
         userAgent: 'unixporn-love',
         topURL: 'https://www.reddit.com/r/unixporn/top/.json?count=20',
-        latestURL: 'https://www.reddit.com/r/unixporn/.json?sort=new',
+        latestURL: 'https://www.reddit.com/r/unixporn/new/.json',
         isLatestLoaded: false,
         isTopLoaded: false,
     },
