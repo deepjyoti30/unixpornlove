@@ -9,6 +9,8 @@ var fetchTrending = new Vue({
         latestURL: 'https://www.reddit.com/r/unixporn/new/.json',
         isLatestLoaded: false,
         isTopLoaded: false,
+        // Modal related data below
+        modalTitle: ""
     },
     methods: {
         fetchData: function() {
@@ -133,6 +135,33 @@ var fetchTrending = new Vue({
                   }
                 ]
             })
+        },
+        showTrending(indexToShow) {
+            /**
+             * Show the data related to the post clickde on.
+             */
+            // Update the title
+            this.modalTitle = this.trendingPostsContainer[indexToShow]["data"]["title"]
+            MicroModal.init({
+                openTrigger: 'data-custom-open', // [3]
+                closeTrigger: 'data-custom-close',
+            })
+            MicroModal.show("modal-1")
+            
+        },
+        popup(index, typeData) {
+            /**
+             * Handle the popup if the user clicks on the more details
+             * button.
+             * 
+             * The passed index is the index of the typeData and can be
+             * accordingly.
+             */
+            if (typeData == "trending")
+                // Show trending's index'd data
+                this.showTrending(index)
+            else if (typeData == "latest")
+                this.showLatest(index)
         }
     },
     computed: {
@@ -153,6 +182,9 @@ var fetchTrending = new Vue({
         },
         showLatest: function() {
             return this.isLatestLoaded
+        },
+        getModalTitle: function() {
+            return this.modalTitle
         }
     },
     mounted() {
@@ -164,5 +196,7 @@ var fetchTrending = new Vue({
         this.initSlick("#cards-container-trending")
         // Initialize latest posts
         this.initSlick("#cards-container-latest")
+        // Initiate the modal
+        //MicroModal.init()
     }
 })

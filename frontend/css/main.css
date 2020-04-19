@@ -10,10 +10,10 @@
   font-family: "Marat-Sans";
   src: url("../fonts/Marat Sans Regular.woff") format("woff"); }
 
-.lineto-black, .btn-card-overlay, b {
+.lineto-black, b {
   font-family: 'Lineto-black'; }
 
-.lineto-medium, #footer, nav {
+.lineto-medium, #footer, .btn-card-overlay, nav {
   font-family: 'Lineto-medium'; }
 
 .marat-sans, #top-post .container-fluid, body {
@@ -57,7 +57,8 @@ button {
 .small-card {
   width: 300px;
   margin: 30px 10px;
-  position: relative; }
+  position: relative;
+  transition: .2s ease; }
 
 #btn-container {
   position: absolute;

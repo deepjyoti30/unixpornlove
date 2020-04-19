@@ -103,6 +103,7 @@ button {
     width: 300px;
     margin: 30px 10px;
     position: relative;
+    transition: .2s ease;
 }
 
 #btn-container {
@@ -127,7 +128,7 @@ button {
     padding: 10px 20px;
 
     text-transform: uppercase;
-    @extend .lineto-black;
+    @extend .lineto-medium;
     border-radius: 25px;
 }
 
