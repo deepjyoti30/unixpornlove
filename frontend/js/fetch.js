@@ -16,6 +16,7 @@ var fetchTrending = new Vue({
         modalHoursGone: "",
         modalURL: "",
         modalHeaderTitle: "",
+        modalAuthor: "",
     },
     methods: {
         fetchData: function() {
@@ -156,6 +157,7 @@ var fetchTrending = new Vue({
             this.modalUps = container["ups"]
             this.modalHoursGone = this.getDiffHours(container["created_utc"])
             this.modalURL = this.getFullUri(container["permalink"])
+            this.modalAuthor = "u/" + container["author"]
 
             MicroModal.init()
             MicroModal.show("modal-1", {
@@ -224,6 +226,9 @@ var fetchTrending = new Vue({
         },
         getModalHeaderTitle: function() {
             return this.modalHeaderTitle
+        },
+        getModalAuthor: function() {
+            return this.modalAuthor
         }
     },
     mounted() {
