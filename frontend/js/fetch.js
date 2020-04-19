@@ -2,15 +2,18 @@ var fetchTrending = new Vue({
     el: "#body",
     data: {
         trendingPostsContainer: [],
+        latestPostsContainer: [],
         topPost: null,
-        topURL: 'https://www.reddit.com/r/unixporn/top/.json?count=20'
+        userAgent: 'unixporn-love',
+        topURL: 'https://www.reddit.com/r/unixporn/top/.json?count=20',
+        latestURL: 'https://www.reddit.com/r/unixporn/.json?sort=new'
     },
     methods: {
         fetchData: function() {
             // Fetch the post data from reddit
             fetch(this.topURL, {
                 headers: {
-                    'User-Agent': 'unixporn-app'}
+                    'User-Agent': this.userAgent}
                 })
                 .then(response => {return response.json()})
                 .then((jsonData) => {
@@ -21,33 +24,61 @@ var fetchTrending = new Vue({
                     this.trendingPostsContainer = data
                 })
         },
+        fetchLatest: function(){
+            // Fetch the latest posts using the latestURL
+
+            fetch(this.latestURL, {
+                headers: {
+                    'User-Agent': this.userAgent
+                }
+            })
+            .then(response => {return response.json()})
+            .then(jsonData => {
+                // Parse the json data
+                let data = jsonData["data"]["children"]
+                data.splice(0, 1)
+                this.latestPostsContainer = data
+            })
+        },
         calcPercentage(data) {
             return (data.ups / (data.ups + data.downs) * 100)
         },
         getFullUri(permalink) {
             return "https://www.reddit.com/" + permalink
         },
+        initSlick: function(element) {
+            // Initiate the slick containers
+            $(element).not('.slick-initialized').slick({
+                infinite: false,
+                slidesToShow: 4,
+                slidesToScroll: 3,
+                variableWidth: true,
+                draggable: false,
+            })
+        }
     },
     computed: {
         getPosts: function() {
-            return this.trendingPostsContainer
+            if (this.trendingPostsContainer.length)
+                return this.trendingPostsContainer
         },
         getTopPost: function() {
             if (this.topPost)
                 return this.topPost
         },
+        getLatestPosts: function() {
+            if (this.latestPostsContainer.length)
+                return this.latestPostsContainer
+        }
     },
     mounted() {
         this.fetchData()
+        this.fetchLatest()
     },
     updated() {
-        // Initialize slick
-        $('#cards-container').slick({
-            infinite: false,
-            slidesToShow: 4,
-            slidesToScroll: 3,
-            variableWidth: true,
-            draggable: false
-        })
+        // Initialize slick for trending
+        this.initSlick("#cards-container-trending")
+        // Initialize latest posts
+        this.initSlick("#cards-container-latest")
     }
 })

@@ -52,10 +52,25 @@
             </div>
         </section>
         <section id="trending">
-            <div class="py-5 my-5 container-fluid px-5">
+            <div class="pt-5 mt-5 container-fluid px-5">
                 <h1 class="display-4">Trending Posts</h1>
-                <div class="pb-5 pt-3 pl-3" id="cards-container">
+                <div class="pt-3 pl-3" id="cards-container-trending">
                     <div id="card" class="bg-white small-card rounded-lg shadow" v-for="(post, id) in getPosts" :key="id">
+                        <img :src="post.data.url" alt="" class="img-fluid-card rounded-top">
+                        <div id="details" class="pt-4 pb-3 px-3">
+                            <h4 v-if="post.data.title.length < 33">{{post.data.title}}</h4>
+                            <h4 v-else>{{post.data.title.substring(0, 30) + ".."}}</h4>
+                            <h5 class="text-dark"><span class="upvote-color">{{post.data.ups}}</span> upvotes &nbsp;&bullet;&nbsp;u/{{post.data.author}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="latest">
+            <div class="py-3 container-fluid px-5">
+                <h1 class="display-4">Latest Posts</h1>
+                <div class="pt-3 pl-3" id="cards-container-latest">
+                    <div id="card" class="bg-white small-card rounded-lg shadow" v-for="(post, id) in getLatestPosts" :key="id">
                         <img :src="post.data.url" alt="" class="img-fluid-card rounded-top">
                         <div id="details" class="pt-4 pb-3 px-3">
                             <h4 v-if="post.data.title.length < 33">{{post.data.title}}</h4>
