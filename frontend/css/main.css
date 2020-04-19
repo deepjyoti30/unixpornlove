@@ -13,7 +13,7 @@
 .lineto-black, b {
   font-family: 'Lineto-black'; }
 
-.lineto-medium, nav {
+.lineto-medium, #footer, nav {
   font-family: 'Lineto-medium'; }
 
 .marat-sans, #top-post .container-fluid, body {
@@ -71,3 +71,38 @@ body {
 .slick-next:before {
   color: red;
   font-size: 30px; }
+
+@media only screen and (max-width: 468px) {
+  #footer {
+    text-align: center !important; } }
+
+#share-items {
+  text-align: right; }
+  @media only screen and (max-width: 468px) {
+    #share-items {
+      padding-top: 25px;
+      text-align: center; } }
+.list-inline-item {
+  border-radius: 50%;
+  padding: 13px 15px;
+  margin: 0 15px;
+  border-width: 2px;
+  border-style: solid;
+  transition: .2s ease-in; }
+
+.list-inline > .twitter-item {
+  color: #1DA1F2;
+  border-color: #1DA1F2; }
+  .list-inline > .twitter-item:hover {
+    color: #fff;
+    background: #1DA1F2 !important; }
+
+.list-inline-item a {
+  color: inherit; }
+
+.list-inline > .github-item {
+  color: #333;
+  border-color: #333; }
+  .list-inline > .github-item:hover {
+    color: #fff;
+    background-color: #333 !important; }

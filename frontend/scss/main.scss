@@ -1,3 +1,6 @@
+// Variables
+$mobile-breakpoint: 468px;
+
 @font-face {
     font-family: 'Lineto-black';
     src: url('../fonts/lineto-circular-black.woff') format('woff'),
@@ -117,3 +120,58 @@ b {
     color: red;
     font-size: 30px;
   }
+
+// Footer
+
+#footer {
+    @extend .lineto-medium;
+
+    @media only screen and (max-width: $mobile-breakpoint) {
+        text-align: center !important;
+    }
+}
+
+#share-items {
+    text-align: right;
+
+    @media only screen and (max-width: $mobile-breakpoint) {
+        padding-top: 25px;
+        text-align: center
+    }
+}
+
+$twitterBrandColor: #1DA1F2;
+$githubBrandColor: #333;
+
+.list-inline-item {
+    border-radius: 50%;
+    padding: 13px 15px;
+    margin: 0 15px;
+    border-width: 2px;
+    border-style: solid;
+    transition: .2s ease-in;
+}
+
+.list-inline > .twitter-item {
+    color: $twitterBrandColor;
+    border-color: $twitterBrandColor;
+
+    &:hover {
+        color: #fff;
+        background: $twitterBrandColor !important;
+    }
+}
+
+.list-inline-item a {
+    color: inherit;
+}
+
+.list-inline > .github-item {
+    color: $githubBrandColor;
+    border-color: $githubBrandColor;
+
+    &:hover {
+        color: #fff;
+        background-color: $githubBrandColor !important;
+    }
+}
