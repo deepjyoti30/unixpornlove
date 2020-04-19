@@ -1,5 +1,7 @@
 // Variables
 $mobile-breakpoint: 468px;
+$background: #F5F5F5;
+$primary: #30BEB0;
 
 @font-face {
     font-family: 'Lineto-black';
@@ -36,7 +38,7 @@ nav {
 
 body {
     @extend .marat-sans;
-    background: #F5F5F5;
+    background: $background;
 }
 
 b {
@@ -49,10 +51,6 @@ b {
     width: 100%;
     height: 450px;
     object-fit: cover;
-}
-
-.text-cyan {
-    color: #60BAAF;
 }
 
 .rounded-xl {
@@ -72,9 +70,12 @@ b {
 
 // Button
 
-.button {
+button {
     outline: none !important;
     border: none !important;
+}
+
+.button {
     padding: 8px 24px;
     text-transform: uppercase;
     font-size: 20px;
@@ -83,16 +84,16 @@ b {
 }
 
 .btn-light {
-    background: #30BEB0;
+    background: $primary;
     color: #121212;
 
     &:hover {
-        background: #30BEB0;
+        background: $primary;
         opacity: 0.8;
     }
 
     &:focus, &:active {
-        background: #30BEB0 !important;
+        background: $primary !important;
     }
 }
 
@@ -101,12 +102,48 @@ b {
 .small-card {
     width: 300px;
     margin: 30px 10px;
+    position: relative;
+}
+
+#btn-container {
+    position: absolute;
+    top: 50px;
+    right: 60px;
+    visibility: hidden;
+}
+
+.small-card:hover #btn-container {
+    transition: .2s ease;
+    visibility: visible;
+}
+
+.small-card:hover img {
+    transition: .2s ease;
+    opacity: 0.5;
+}
+
+.btn-card-overlay {
+    font-size: 20px;
+    padding: 10px 20px;
+
+    text-transform: uppercase;
+    @extend .lineto-black;
+    border-radius: 25px;
 }
 
 .img-fluid-card {
     width: 300px;
     height: 200px;
     object-fit: cover;
+}
+
+@keyframes reveal {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 100%;
+    }
 }
 
 // Slick arrows

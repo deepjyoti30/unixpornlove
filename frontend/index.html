@@ -55,13 +55,16 @@
         <section v-if="showTop" id="trending">
             <div class="pt-5 mt-5 container-fluid px-5">
                 <h1 class="display-4 pl-3">Trending Posts</h1>
-                <div class="pt-3 pl-3" id="cards-container-trending">
+                <div class="pt-3 pl-5" id="cards-container-trending">
                     <div id="card" class="bg-white small-card rounded-lg shadow" v-for="(post, id) in getPosts" :key="id">
                         <img :src="post.data.url" alt="" class="img-fluid-card rounded-top">
                         <div id="details" class="pt-4 pb-3 px-3">
                             <h4 v-if="post.data.title.length < 33">{{post.data.title}}</h4>
                             <h4 v-else>{{post.data.title.substring(0, 30) + ".."}}</h4>
                             <h5 class="text-dark"><span class="upvote-color">{{post.data.ups}}</span> upvotes &nbsp;&bullet;&nbsp;u/{{post.data.author}}</h5>
+                        </div>
+                        <div id="btn-container">
+                            <button type="button" class="btn-card-overlay btn-light shadow">More details</button>
                         </div>
                     </div>
                 </div>
