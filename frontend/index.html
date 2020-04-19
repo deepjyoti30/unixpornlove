@@ -28,18 +28,35 @@
                 <div class="modal__overlay" tabindex="-1" data-micromodal-close>
                   <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
                     <header class="modal__header">
-                      <h2 class="modal__title" id="modal-1-title">
-                        {{getModalTitle}}
+                      <h2 class="lineto-medium px-3" id="modal-1-title">
+                        {{getModalHeaderTitle}}
                       </h2>
                       <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
                     </header>
-                    <main class="modal__content" id="modal-1-content">
-                      <img src="assets/temp.jpg" alt="" class="img-fluid">
+                    <main class="modal__content lineto-medium" id="modal-1-content">
+                      <div class="container-fluid row">
+                          <div class="col-md-8 col-lg-8">
+                              <img :src="getModalImg" alt="" class="img-fluid">
+                          </div>
+                          <div class="col-lg-4 my-auto pl-5">
+                              <h3 class="pb-3">
+                                {{getModalTitle}}
+                              </h3>
+                                <h5>
+                                    <span class="upvote-color">{{getModalUps}}</span> upvotes in {{getModalHours}}
+                                </h5>
+                                <div id="button-container" class="mt-5">
+                                    <a :href="getModalURL">
+                                        <button type="button" class="button btn-light shadow">check post</button>
+                                    </a>
+                                </div>
+                          </div>
+                      </div>
                     </main>
-                    <footer class="modal__footer">
+                    <!--footer-- class="modal__footer">
                       <button class="modal__btn modal__btn-primary">Continue</button>
                       <button class="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
-                    </footer>
+                    </!--footer-->
                   </div>
                 </div>
               </div>

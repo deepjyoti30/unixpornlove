@@ -10,7 +10,12 @@ var fetchTrending = new Vue({
         isLatestLoaded: false,
         isTopLoaded: false,
         // Modal related data below
-        modalTitle: ""
+        modalTitle: "",
+        modalImgSrc: "",
+        modalUps: "",
+        modalHoursGone: "",
+        modalURL: "",
+        modalHeaderTitle: "",
     },
     methods: {
         fetchData: function() {
@@ -141,12 +146,18 @@ var fetchTrending = new Vue({
              * Show the data related to the post clickde on.
              */
             // Update the title
-            this.modalTitle = this.trendingPostsContainer[indexToShow]["data"]["title"]
-            MicroModal.init({
-                openTrigger: 'data-custom-open', // [3]
-                closeTrigger: 'data-custom-close',
+            let container = this.trendingPostsContainer[indexToShow]["data"]
+            this.modalTitle = container["title"]
+            this.modalImgSrc = container["url"]
+            this.modalUps = container["ups"]
+            this.modalHoursGone = this.getDiffHours(container["created_utc"])
+            this.modalURL = this.getFullUri(container["permalink"])
+
+            MicroModal.init()
+            MicroModal.show("modal-1", {
+                disableScroll: true,
+                awaitCloseAnimation: true
             })
-            MicroModal.show("modal-1")
             
         },
         popup(index, typeData) {
@@ -157,6 +168,13 @@ var fetchTrending = new Vue({
              * The passed index is the index of the typeData and can be
              * accordingly.
              */
+            // Build the title header
+            this.modalHeaderTitle = "Currently #"
+                                    + (index + 1)
+                                    + " in "
+                                    + typeData[0].toUpperCase()
+                                    + typeData.slice(1)
+
             if (typeData == "trending")
                 // Show trending's index'd data
                 this.showTrending(index)
@@ -185,6 +203,21 @@ var fetchTrending = new Vue({
         },
         getModalTitle: function() {
             return this.modalTitle
+        },
+        getModalImg: function() {
+            return this.modalImgSrc
+        },
+        getModalUps: function() {
+            return this.modalUps
+        },
+        getModalHours: function() {
+            return this.modalHoursGone
+        },
+        getModalURL: function() {
+            return this.modalURL
+        },
+        getModalHeaderTitle: function() {
+            return this.modalHeaderTitle
         }
     },
     mounted() {
