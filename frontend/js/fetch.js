@@ -21,6 +21,7 @@ var fetchTrending = new Vue({
         modalAuthor: "",
         modalCommentsNum: "",
         modalComment: "",
+        isCommentLoading: true,
         showModalComment: false
     },
     methods: {
@@ -196,6 +197,7 @@ var fetchTrending = new Vue({
              * from the user. The comments are probably in markdown, we'll
              * use markedJS to format them.
              */
+            this.isCommentLoading = true
             let commentsByAuthor = []
             fetch(postURL + ".json", {
                 headers: {
@@ -213,6 +215,7 @@ var fetchTrending = new Vue({
                 // If no comments found return
                 if (!commentsByAuthor.length) {
                     this.showModalComment = false
+                    this.isCommentLoading = false
                     return false
                 }
                 
@@ -400,6 +403,9 @@ var fetchTrending = new Vue({
         getShowModalComment: function() {
             return this.showModalComment
         },
+        getIsCommentLoading: function() {
+            return this.isCommentLoading
+        }
     },
     mounted() {
         this.fetchData()

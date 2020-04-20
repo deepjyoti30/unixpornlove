@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/micromodal.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/reddit.css">
+    <link rel="stylesheet" href="css/loader.css">
 </head>
 <body>
     <section id="body">
@@ -49,6 +50,14 @@
                                         Say thanks to <a class="upvote-color" :href="'reddit.com/' + getTopPost.data.author">u/{{getTopPost.data.author}}</a> for the dots.
                                     </h1>
                                     <div v-html="getModalComment" class="py-4 rounded-xl bg-brighter shadow px-4 my-3" id="details-comment">
+                                    </div>
+                                </div>
+                                <div v-else-if="getIsCommentLoading" align="center" class="py-5" id="loading-animation">
+                                    <div class="loading-dots dark-gray">
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
                                     </div>
                                 </div>
                                 <div v-else class="py-3 dark-text">
@@ -87,6 +96,14 @@
                                     {{getModalAuthor}} &nbsp;&bullet;&nbsp; {{getNumComments}} comment<span v-if="getNumComments > 1">s</span>
                                 </h6>
                                 <div v-if="getShowModalComment" v-html="getModalComment" class="py-4 rounded-xl bg-brighter shadow px-4 my-3" id="details-comment">
+                                </div>
+                                <div v-else-if="getIsCommentLoading" align="center" class="py-5" id="loading-animation">
+                                    <div class="loading-dots dark-gray">
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
+                                        <i></i>
+                                    </div>
                                 </div>
                                 <div v-else class="py-3 dark-text">
                                     <i class="fas fa-skull-crossbones"></i> &nbsp;User has not provided any dots. I hate him too!
