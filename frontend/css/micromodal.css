@@ -13,13 +13,14 @@
   align-items: center; }
 
 .modal__container {
-  color: #fff;
   padding: 30px;
   max-width: 90%;
   max-height: 90%;
   border-radius: 4px;
   overflow-y: auto;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  color: #000;
+  background: #fff; }
 
 .modal__header {
   display: flex;
@@ -27,7 +28,7 @@
   align-items: center; }
 
 .modal__close {
-  color: #fff;
+  color: #000;
   background: transparent;
   border: 0; }
 
@@ -37,8 +38,7 @@
 .modal__content {
   margin-top: 2rem;
   margin-bottom: 2rem;
-  line-height: 1.5;
-  color: #fff; }
+  line-height: 1.5; }
 
 .modal__btn {
   font-size: .875rem;

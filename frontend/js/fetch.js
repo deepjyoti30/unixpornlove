@@ -20,6 +20,7 @@ var fetchTrending = new Vue({
         modalHeaderTitle: "",
         modalAuthor: "",
         modalCommentsNum: "",
+        modalComment: ""
     },
     methods: {
         fetchData: function() {
@@ -184,6 +185,38 @@ var fetchTrending = new Vue({
             formattedUrl = this.formatTitleToUrl(title)
             history.pushState({id: 'homepage'}, titleToShow, formattedUrl)
         },
+        getComment(postURL) {
+            /**
+             * Try to get the comment by the user that contains
+             * the dotfiles etc.
+             * 
+             * The comments can be got by making a JSON request to the
+             * passed URL. Once that's done, the second element is the
+             * comments container.
+             * 
+             * From this container, we will filter out all the top level comments
+             * from the user. The comments are probably in markdown, we'll
+             * use markedJS to format them.
+             */
+            let commentsByAuthor = []
+            fetch(postURL + ".json", {
+                headers: {
+                    'User-Agent': this.userAgent
+                }
+            })
+            .then(response => {return response.json()})
+            .then(jsonData => {
+                comments = jsonData[1]["data"]["children"]
+                comments.forEach(element => {
+                    if (element["data"]["is_submitter"])
+                        commentsByAuthor.push(element)
+                });
+                commentsByAuthor.forEach(element => {
+                    console.log(element["data"]["body"])
+                })
+                this.modalComment = marked(commentsByAuthor[0]["data"]["body"])
+            })
+        },
         showModal(indexToShow, dataContainer) {
             /**
              * Show the data related to the post clickde on.
@@ -201,6 +234,7 @@ var fetchTrending = new Vue({
             this.modalURL = this.getFullUri(container["permalink"])
             this.modalAuthor = "u/" + container["author"]
             this.modalCommentsNum = container["num_comments"]
+            this.getComment(this.modalURL)
 
             MicroModal.init()
             MicroModal.show("modal-1", {
@@ -301,6 +335,9 @@ var fetchTrending = new Vue({
         },
         getNumComments: function() {
             return this.modalCommentsNum
+        },
+        getModalComment: function() {
+            return this.modalComment
         }
     },
     mounted() {
