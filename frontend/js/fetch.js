@@ -126,29 +126,28 @@ var fetchTrending = new Vue({
             // Initiate the slick containers
             $(element).not('.slick-initialized').slick({
                 infinite: false,
-                slidesToShow: 4,
-                slidesToScroll: 3,
+                slidesToShow: 5,
+                slidesToScroll: 4,
                 variableWidth: true,
                 draggable: false,
                 responsive: [{
+                    breakpoint: 1378,
+                    settings: {
+                        slidesToShow: 4,
+                        slidesToScroll: 3
+                    }
 
-                    breakpoint: 1024,
+                  }, {
+              
+                    breakpoint: 1061,
                     settings: {
-                      slidesToShow: 5,
-                      slidesToScroll: 4,
+                      slidesToShow: 3,
+                      slidesToScroll: 2,
                     }
               
                   }, {
               
-                    breakpoint: 830,
-                    settings: {
-                      slidesToShow: 4,
-                      slidesToScroll: 3,
-                    }
-              
-                  }, {
-              
-                    breakpoint: 411,
+                    breakpoint: 736,
                     settings: {
                         slidesToShow: 2,
                         slidesToScroll: 1
