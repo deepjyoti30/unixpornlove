@@ -294,6 +294,7 @@ var fetchTrending = new Vue({
                 },
                 onClose: () => {
                     this.resetTitleUrl()
+                    this.showModalComment = false
                 },
                 disableScroll: true,
                 awaitCloseAnimation: true,
