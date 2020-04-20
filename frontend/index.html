@@ -34,7 +34,23 @@
                       <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
                     </header>
                     <main class="modal__content lineto-medium" id="modal-top-content">
-                        <img :src="getTopPost.data.url" alt="" class="img-fluid">
+                        <div class="row container-fluid">
+                            <div class="col-md-8 col-lg-8">
+                                <img :src="getTopPost.data.url" alt="" class="img-fluid">
+                            </div>
+                            <div class="col-md-4 col-lg-4 pl-5">
+                                <div  v-if="getShowModalComment">
+                                    <h1 class="py-3">
+                                        Say thanks to <a class="upvote-color" :href="'reddit.com/' + getTopPost.data.author">u/{{getTopPost.data.author}}</a> for the dots.
+                                    </h1>
+                                    <div v-html="getModalComment" class="py-4 rounded-xl shadow px-4 my-3" id="details-comment">
+                                    </div>
+                                </div>
+                                <div v-else class="py-3 text-dark">
+                                    <i class="fas fa-skull-crossbones"></i> &nbsp;User has not provided any dots. I hate him too!
+                                </div>
+                            </div>
+                        </div>
                     </main>
                   </div>
                 </div>
@@ -115,7 +131,7 @@
         <section v-if="showTop" id="trending">
             <div class="pt-5 mt-5 container-fluid px-5">
                 <h1 class="display-4 pl-3">Trending Posts</h1>
-                <div class="pt-3 pl-5" id="cards-container-trending">
+                <div class="pt-3 pl-3" id="cards-container-trending">
                     <div id="card" class="bg-white small-card rounded-lg shadow" v-for="(post, id) in getPosts" :key="id">
                         <img :src="post.data.url" alt="" class="img-fluid-card rounded-top" loading="lazy">
                         <div id="details" class="pt-4 pb-3 px-3">

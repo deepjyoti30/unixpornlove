@@ -247,6 +247,7 @@ var fetchTrending = new Vue({
                 },
                 onClose: () => {
                     this.resetTitleUrl()
+                    this.showModalComment = false
                 },
                 disableScroll: true,
                 awaitCloseAnimation: true,
@@ -281,6 +282,10 @@ var fetchTrending = new Vue({
             /**
              * Show the trending posts image in a popup
              */
+
+            // Get the comments for the top post
+            this.getComment(this.getFullUri(this.topPost.data.permalink))
+
             MicroModal.init()
             MicroModal.show("modal-top", {
                 onShow: () => {
