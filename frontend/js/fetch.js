@@ -74,8 +74,6 @@ var fetchTrending = new Vue({
              * process it and accordingly return a day or hour(s)
              * value.
              */
-            differenceInHours = Math.floor(differenceInHours)
-
             if (differenceInHours < 2) {
                 // Just return the hours if less than 24
                 return differenceInHours + " hour"
@@ -109,7 +107,7 @@ var fetchTrending = new Vue({
             currentTime = new Date()
             diffInMs = currentTime - createdTime
 
-            differenceInHours = Math.abs(diffInMs) / 36e5
+            differenceInHours = Math.floor(Math.abs(diffInMs) / 36e5)
 
             // If the value is greater than 0, return
             if (differenceInHours > 0)
@@ -211,9 +209,6 @@ var fetchTrending = new Vue({
                     if (element["data"]["is_submitter"])
                         commentsByAuthor.push(element)
                 });
-                commentsByAuthor.forEach(element => {
-                    console.log(element["data"]["body"])
-                })
                 this.modalComment = marked(commentsByAuthor[0]["data"]["body"])
             })
         },
@@ -338,7 +333,7 @@ var fetchTrending = new Vue({
         },
         getModalComment: function() {
             return this.modalComment
-        }
+        },
     },
     mounted() {
         this.fetchData()

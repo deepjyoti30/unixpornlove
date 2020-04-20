@@ -45,6 +45,22 @@ b {
     @extend .lineto-black;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
+::-webkit-scrollbar-track {
+    background: #fff;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #121212;
+
+    &:hover {
+        background-color: #000;
+    }
+}
+
 // Custom classes
 
 .top-post-img {
