@@ -312,7 +312,7 @@ var fetchTrending = new Vue({
              */
             $('link[href="css/main.css"]').attr('href','css/main-dark.css')
             $('link[href="css/reddit.css"]').attr('href','css/reddit-dark.css')
-            //$('link[href="css/main.css"]').attr('href','css/main-dark.css')]
+            $('link[href="css/micromodal.css"]').attr('href','css/micromodal-dark.css')
 
             // Change the icon
             element.classList.remove('fa-moon')
@@ -326,6 +326,7 @@ var fetchTrending = new Vue({
             // Same function as toDark just opposite
             $('link[href="css/main-dark.css"]').attr('href','css/main.css')
             $('link[href="css/reddit-dark.css"]').attr('href','css/reddit.css')
+            $('link[href="css/micromodal-dark.css"]').attr('href','css/micromodal.css')
 
             // Change the icon
             element.classList.remove('fa-sun')
