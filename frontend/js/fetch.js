@@ -212,7 +212,8 @@ var fetchTrending = new Vue({
                     this.resetTitleUrl()
                 },
                 disableScroll: true,
-                awaitCloseAnimation: true
+                awaitCloseAnimation: true,
+                disableFocus: true
             })
             
         },
@@ -238,6 +239,24 @@ var fetchTrending = new Vue({
                 this.showModal(index, this.trendingPostsContainer)
             else if (typeData == "latest")
                 this.showModal(index, this.latestPostsContainer)
+        },
+        showTopImage() {
+            /**
+             * Show the trending posts image in a popup
+             */
+            MicroModal.init()
+            MicroModal.show("modal-top", {
+                onShow: () => {
+                    // Change the title and url of the page
+                    this.updateTitleUrl(this.topPost.data.title)
+                },
+                onClose: () => {
+                    this.resetTitleUrl()
+                },
+                disableScroll: true,
+                awaitCloseAnimation: true,
+                disableFocus: true
+            })
         }
     },
     computed: {
