@@ -36,9 +36,11 @@
                     <main class="modal__content lineto-medium" id="modal-1-content">
                       <div class="container-fluid row">
                           <div class="col-md-8 col-lg-8">
-                              <img :src="getModalImg" alt="" class="img-fluid">
+                            <a :href="getModalImg" target="_blank">
+                                <img :src="getModalImg" alt="" class="img-fluid">
+                            </a>
                           </div>
-                          <div class="col-lg-4 my-auto pl-5">
+                          <div class="col-lg-4 mt-5 pl-5">
                               <h3 class="pb-3">
                                 {{getModalTitle}}
                               </h3>
