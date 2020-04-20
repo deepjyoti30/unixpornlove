@@ -19,11 +19,15 @@
 .marat-sans, #top-post .container-fluid, body {
   font-family: 'Marat-Sans'; }
 
+nav > a {
+  color: #fff !important; }
+
 body {
-  background: #F5F5F5; }
+  color: #fff;
+  background: #212121; }
 
 .bg-brighter {
-  background: #fff; }
+  background: #121212; }
 
 ::-webkit-scrollbar {
   display: none; }
@@ -37,7 +41,7 @@ body {
     background-color: #000; }
 
 .dark-text {
-  color: #6b6b6b; }
+  color: #adadad; }
 
 .top-post-img {
   width: 100%;

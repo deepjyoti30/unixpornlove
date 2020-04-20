@@ -18,9 +18,9 @@
 </head>
 <body>
     <section id="navbar">
-        <nav class="navbar navbar-light bg-white shadow-md px-5">
+        <nav class="navbar navbar-light bg-brighter shadow-md px-5">
             <a class="navbar-brand" href="#">UnixPorn &nbsp;<i class="fas fa-heart upvote-color"></i></a>
-          </nav>
+        </nav>
     </section>
     <section id="body">
         <section id="modal">
@@ -46,7 +46,7 @@
                                     <div v-html="getModalComment" class="py-4 rounded-xl shadow px-4 my-3" id="details-comment">
                                     </div>
                                 </div>
-                                <div v-else class="py-3 text-dark">
+                                <div v-else class="py-3 dark-text">
                                     <i class="fas fa-skull-crossbones"></i> &nbsp;User has not provided any dots. I hate him too!
                                 </div>
                             </div>
@@ -83,7 +83,7 @@
                                 </h6>
                                 <div v-if="getShowModalComment" v-html="getModalComment" class="py-4 rounded-xl shadow px-4 my-3" id="details-comment">
                                 </div>
-                                <div v-else class="py-3 text-dark">
+                                <div v-else class="py-3 dark-text">
                                     <i class="fas fa-skull-crossbones"></i> &nbsp;User has not provided any dots. I hate him too!
                                 </div>
                                 <div id="button-container" class="mt-5">
@@ -110,16 +110,16 @@
                 </div>
                 <div class="col-md-4">
                     <h1 class="display-3">Top Post</h1>
-                    <div id="card-details" class="mt-5 py-4 px-4 bg-white rounded-xl shadow">
+                    <div id="card-details" class="mt-5 py-4 px-4 bg-brighter rounded-xl shadow">
                         <span id="flair" class="bg-screenshot">
                             {{getTopPost.data.link_flair_text}}
                         </span>
                         <h1 id="title" class="py-3">{{getTopPost.data.title}}</h1>
-                        <h4 class="text-dark">
+                        <h4 class="dark-text">
                             {{getDiffHours(getTopPost.data.created_utc)}} ago 
                             <span class="text-muted">by</span> u/{{getTopPost.data.author}}
                         </h4>
-                        <h4 class="text-dark">
+                        <h4 class="dark-text">
                             <span class="upvote-color">{{getTopPost.data.ups}}</span> upvotes 
                             <span>
                                 &nbsp;&bullet;&nbsp;<span class="upvote-color">{{calcPercentage(getTopPost.data)}}%</span> upvoted
@@ -137,12 +137,12 @@
             <div class="pt-5 mt-5 container-fluid px-5">
                 <h1 class="display-4 pl-3">Trending Posts</h1>
                 <div class="pt-3 pl-3" id="cards-container-trending">
-                    <div id="card" class="bg-white small-card rounded-lg shadow" v-for="(post, id) in getPosts" :key="id">
+                    <div id="card" class="bg-brighter small-card rounded-lg shadow" v-for="(post, id) in getPosts" :key="id">
                         <img :src="post.data.url" alt="" class="img-fluid-card rounded-top" loading="lazy">
                         <div id="details" class="pt-4 pb-3 px-3">
                             <h4 v-if="post.data.title.length < 33">{{post.data.title}}</h4>
                             <h4 v-else>{{post.data.title.substring(0, 30) + ".."}}</h4>
-                            <h5 class="text-dark"><span class="upvote-color">{{post.data.ups}}</span> upvotes &nbsp;&bullet;&nbsp;u/{{post.data.author}}</h5>
+                            <h5 class="dark-text"><span class="upvote-color">{{post.data.ups}}</span> upvotes &nbsp;&bullet;&nbsp;u/{{post.data.author}}</h5>
                         </div>
                         <div id="btn-container">
                             <button type="button" class="btn-card-overlay btn-light shadow" @click="popup(id, 'trending')">
@@ -157,12 +157,12 @@
             <div class="py-3 container-fluid px-5">
                 <h1 class="display-4 pl-3">Latest Posts</h1>
                 <div class="pt-3 pl-3" id="cards-container-latest">
-                    <div id="card" class="bg-white small-card rounded-lg shadow" v-for="(post, id) in getLatestPosts" :key="id">
+                    <div id="card" class="bg-brighter small-card rounded-lg shadow" v-for="(post, id) in getLatestPosts" :key="id">
                         <img :src="post.data.url" alt="" class="img-fluid-card rounded-top" loading="lazy">
                         <div id="details" class="pt-4 pb-3 px-3">
                             <h4 v-if="post.data.title.length < 33">{{post.data.title}}</h4>
                             <h4 v-else>{{post.data.title.substring(0, 30) + ".."}}</h4>
-                            <h5 class="text-dark"><span class="upvote-color">{{post.data.ups}}</span> upvotes &nbsp;&bullet;&nbsp;u/{{post.data.author}}</h5>
+                            <h5 class="dark-text"><span class="upvote-color">{{post.data.ups}}</span> upvotes &nbsp;&bullet;&nbsp;u/{{post.data.author}}</h5>
                         </div>
                         <div id="btn-container">
                             <button type="button" class="btn-card-overlay btn-light shadow" @click="popup(id, 'latest')">
@@ -175,11 +175,11 @@
         </section>
     </section>
     <section id="footer">
-        <div id="footer-container" class="py-5 mt-5 px-5 mr-0 bg-white">
+        <div id="footer-container" class="py-5 mt-5 px-5 mr-0 bg-brighter">
             <div class="row container-fluid mr-0">
                 <div class="col-md-6 col-lg-6">
                     <h2>Built with &nbsp;<i class="fas fa-sm fa-heart upvote-color"></i>&nbsp; in a *nix OS</h2>
-                    <h6 class="mt-3 text-dark"><a href="deepjyoti30.github.io" class="text-dark">Deepjyoti Barman</a> &nbsp;&bullet;&nbsp; 2020</h6>
+                    <h6 class="mt-3 dark-text"><a href="deepjyoti30.github.io" class="dark-text">Deepjyoti Barman</a> &nbsp;&bullet;&nbsp; 2020</h6>
                 </div>
                 <div id="share-items" class="col-md-6 col-lg-6">
                     <ul class="list-inline">

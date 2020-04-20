@@ -1,7 +1,7 @@
 // Variables
 $mobile-breakpoint: 468px;
-$background: #F5F5F5;
-$foreground: #fff;
+$background: #212121;
+$foreground: #121212;
 $primary: #30BEB0;
 
 @font-face {
@@ -37,7 +37,12 @@ nav {
     @extend .lineto-medium;
 }
 
+nav > a {
+    color: #fff !important;
+}
+
 body {
+    color: #fff;
     @extend .marat-sans;
     background: $background;
 }
@@ -69,7 +74,7 @@ b {
 // Custom classes
 
 .dark-text {
-    color: lighten(#121212, 35%);
+    color: darken(#E0E0E0, 20%);
 }
 
 .top-post-img {
