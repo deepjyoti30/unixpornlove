@@ -20,7 +20,8 @@ var fetchTrending = new Vue({
         modalHeaderTitle: "",
         modalAuthor: "",
         modalCommentsNum: "",
-        modalComment: ""
+        modalComment: "",
+        showModalComment: false
     },
     methods: {
         fetchData: function() {
@@ -208,6 +209,14 @@ var fetchTrending = new Vue({
                     if (element["data"]["is_submitter"])
                         commentsByAuthor.push(element)
                 });
+
+                // If no comments found return
+                if (!commentsByAuthor.length) {
+                    this.showModalComment = false
+                    return false
+                }
+                
+                this.showModalComment = true
                 this.modalComment = marked(commentsByAuthor[0]["data"]["body"])
             })
         },
@@ -332,6 +341,9 @@ var fetchTrending = new Vue({
         },
         getModalComment: function() {
             return this.modalComment
+        },
+        getShowModalComment: function() {
+            return this.showModalComment
         },
     },
     mounted() {

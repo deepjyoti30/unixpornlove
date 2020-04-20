@@ -65,7 +65,10 @@
                                 <h6 class="mt-1 text-muted">
                                     {{getModalAuthor}} &nbsp;&bullet;&nbsp; {{getNumComments}} comment<span v-if="getNumComments > 1">s</span>
                                 </h6>
-                                <div v-html="getModalComment" class="py-4 rounded-xl shadow px-4 my-3" id="details-comment">
+                                <div v-if="getShowModalComment" v-html="getModalComment" class="py-4 rounded-xl shadow px-4 my-3" id="details-comment">
+                                </div>
+                                <div v-else class="py-3 text-dark">
+                                    <i class="fas fa-skull-crossbones"></i> &nbsp;User has not provided any dots. I hate him too!
                                 </div>
                                 <div id="button-container" class="mt-5">
                                     <a :href="getModalURL" target="_blank">
