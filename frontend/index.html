@@ -13,16 +13,21 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <!--Custom CSS-->
     <link rel="stylesheet" href="css/micromodal.css">
-    <link rel="stylesheet" href="css/main.css"></link>
+    <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/reddit.css">
 </head>
 <body>
-    <section id="navbar">
-        <nav class="navbar navbar-light bg-brighter shadow-md px-5">
-            <a class="navbar-brand" href="#">UnixPorn &nbsp;<i class="fas fa-heart upvote-color"></i></a>
-        </nav>
-    </section>
     <section id="body">
+        <section id="navbar">
+            <nav class="navbar navbar-light bg-brighter shadow-md px-5">
+                <a class="navbar-brand" href="#">UnixPorn &nbsp;<i class="fas fa-heart upvote-color"></i></a>
+                <div>
+                    <div class="my-auto">
+                        <i id="dark-mode-toggler" current-mode="light" class="fas fa-moon border py-2 px-2 rounded-circle border-dark" @click="toggleDarkMode"></i>
+                    </div>
+                </div>
+            </nav>
+        </section>
         <section id="modal">
             <div class="modal micromodal-slide" id="modal-top" aria-hidden="true">
                 <div class="modal__overlay" tabindex="-1" data-micromodal-close>

@@ -300,6 +300,54 @@ var fetchTrending = new Vue({
                 awaitCloseAnimation: true,
                 disableFocus: true
             })
+        },
+        toDark(element) {
+            /**
+             * Make some changes to completely change the theme to dark
+             * mode.
+             * 
+             * Change the stylesheets
+             * Change the dark mode icon to light mode
+             * Change the current-mode attr to dark
+             */
+            $('link[href="css/main.css"]').attr('href','css/main-dark.css')
+            $('link[href="css/reddit.css"]').attr('href','css/reddit-dark.css')
+            //$('link[href="css/main.css"]').attr('href','css/main-dark.css')]
+
+            // Change the icon
+            element.classList.remove('fa-moon')
+            element.classList.remove('border-dark')
+            element.classList.add('fa-sun')
+            element.classList.add('border-light')
+
+            element.setAttribute("current-mode", "dark")
+        },
+        toLight(element) {
+            // Same function as toDark just opposite
+            $('link[href="css/main-dark.css"]').attr('href','css/main.css')
+            $('link[href="css/reddit-dark.css"]').attr('href','css/reddit.css')
+
+            // Change the icon
+            element.classList.remove('fa-sun')
+            element.classList.remove('boredr-light')
+            element.classList.add('fa-moon')
+            element.classList.add('border-dark')
+
+            element.setAttribute("current-mode", "light")
+        },
+        toggleDarkMode() {
+            /**
+             * Toggle dark mode whe the button is clicked.
+             */
+            let darkModeId = "dark-mode-toggler"
+            let darkModeBtn = document.getElementById(darkModeId)
+
+            let currentMode = darkModeBtn.getAttribute("current-mode")
+            
+            if (currentMode == "light")
+                this.toDark(darkModeBtn)
+            else if (currentMode == "dark")
+                this.toLight(darkModeBtn)
         }
     },
     computed: {
