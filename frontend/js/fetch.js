@@ -1,6 +1,8 @@
 var fetchTrending = new Vue({
     el: "#body",
     data: {
+        defaultUrl: window.location.href,
+        defaultTitle: document.getElementsByTagName("title")[0].innerHTML,
         trendingPostsContainer: [],
         latestPostsContainer: [],
         topPost: null,
@@ -17,6 +19,7 @@ var fetchTrending = new Vue({
         modalURL: "",
         modalHeaderTitle: "",
         modalAuthor: "",
+        modalCommentsNum: "",
     },
     methods: {
         fetchData: function() {
@@ -142,6 +145,31 @@ var fetchTrending = new Vue({
                 ]
             })
         },
+        formatTitleToUrl(title) {
+            /**
+             * Format the passed title to an URL
+             * 
+             * Remove the [ ] and replace all the spaces with a hyphen
+             */
+            let formattedTitle = title.replace(/ /g, "-")
+            formattedTitle = formattedTitle.replace(/\[|\]/g, '')
+            return formattedTitle + '/'
+        },
+        resetTitleUrl() {
+            // Reset the title and URL to the default value
+            document.title = this.defaultTitle
+            history.pushState({id: 'homepage'}, this.defaultTitle, this.defaultUrl)
+        },
+        updateTitleUrl(title) {
+            /**
+             * Update the title and url of the page once the user clicks on 
+             * a particular card
+             */
+            titleToShow =  this.defaultTitle + " | " + title
+            document.title = titleToShow
+            formattedUrl = this.formatTitleToUrl(title)
+            history.pushState({id: 'homepage'}, titleToShow, formattedUrl)
+        },
         showModal(indexToShow, dataContainer) {
             /**
              * Show the data related to the post clickde on.
@@ -158,9 +186,17 @@ var fetchTrending = new Vue({
             this.modalHoursGone = this.getDiffHours(container["created_utc"])
             this.modalURL = this.getFullUri(container["permalink"])
             this.modalAuthor = "u/" + container["author"]
+            this.modalCommentsNum = container["num_comments"]
 
             MicroModal.init()
             MicroModal.show("modal-1", {
+                onShow: () => {
+                    // Change the title and url of the page
+                    this.updateTitleUrl(this.modalTitle)
+                },
+                onClose: () => {
+                    this.resetTitleUrl()
+                },
                 disableScroll: true,
                 awaitCloseAnimation: true
             })
@@ -229,6 +265,9 @@ var fetchTrending = new Vue({
         },
         getModalAuthor: function() {
             return this.modalAuthor
+        },
+        getNumComments: function() {
+            return this.modalCommentsNum
         }
     },
     mounted() {

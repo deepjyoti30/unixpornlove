@@ -121,7 +121,7 @@
 }
 
 .micromodal-slide[aria-hidden="false"] .modal__container {
-  animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+  animation: mmfadeIn .3s cubic-bezier(0, 0, .2, 1);
 }
 
 .micromodal-slide[aria-hidden="true"] .modal__overlay {
@@ -129,7 +129,7 @@
 }
 
 .micromodal-slide[aria-hidden="true"] .modal__container {
-  animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+  animation: mmfadeOut .3s cubic-bezier(0, 0, .2, 1);
 }
 
 .micromodal-slide .modal__container,
