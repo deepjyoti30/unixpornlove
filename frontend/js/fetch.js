@@ -1,6 +1,7 @@
 var fetchTrending = new Vue({
     el: "#body",
     data: {
+        isLoading: false,
         defaultUrl: window.location.href,
         defaultTitle: document.getElementsByTagName("title")[0].innerHTML,
         trendingPostsContainer: [],
@@ -405,6 +406,9 @@ var fetchTrending = new Vue({
         },
         getIsCommentLoading: function() {
             return this.isCommentLoading
+        },
+        isBodyLoading: function() {
+            return this.isLoading
         }
     },
     mounted() {
