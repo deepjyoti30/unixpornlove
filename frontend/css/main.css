@@ -45,6 +45,20 @@ body {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px; }
 
+#top-post-container #top-post-img {
+  position: relative;
+  transition: .2s ease; }
+
+#top-btn-container {
+  position: absolute;
+  bottom: 30px;
+  right: 45px;
+  visibility: hidden; }
+
+#top-post-img:hover #top-btn-container {
+  transition: .2s ease;
+  visibility: visible; }
+
 button {
   outline: none !important;
   border: none !important; }

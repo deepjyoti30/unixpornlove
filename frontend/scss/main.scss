@@ -84,6 +84,23 @@ b {
     @extend .marat-sans;
 }
 
+#top-post-container #top-post-img {
+    position: relative;
+    transition: .2s ease;
+}
+
+#top-btn-container {
+    position: absolute;
+    bottom: 30px;
+    right: 45px;
+    visibility: hidden;
+}
+
+#top-post-img:hover #top-btn-container {
+    transition: .2s ease;
+    visibility: visible;
+}
+
 // Button
 
 button {
@@ -168,12 +185,12 @@ button {
 .slick-prev:before {
     color: red;
     font-size: 30px;
-  }
+}
   
-  .slick-next:before {
+.slick-next:before {
     color: red;
     font-size: 30px;
-  }
+}
 
 // Footer
 

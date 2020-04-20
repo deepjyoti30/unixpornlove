@@ -100,8 +100,13 @@
         </section>
         <section id="top-post">
             <div id="top-post-container" class="row container-fluid pt-5 px-4">
-                <div class="col-md-8">
-                    <img :src="getTopPost.data.url" alt="Top Post image" class="top-post-img rounded-xl shadow" @click="showTopImage()">
+                <div id="top-post-img" class="col-md-8">
+                    <img :src="getTopPost.data.url" alt="Top Post image" class="top-post-img rounded-xl shadow">
+                    <div id="top-btn-container" class="mt-5">
+                        <button type="button" class="btn-card-overlay btn-light shadow" @click="showTopImage()">
+                            More details
+                        </button>
+                    </div>
                 </div>
                 <div class="col-md-4">
                     <h1 class="display-3">Top Post</h1>
