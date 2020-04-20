@@ -46,7 +46,7 @@
                                     <span class="upvote-color">{{getModalUps}}</span> upvotes <span class="text-muted">in</span> {{getModalHours}}
                                 </h5>
                                 <h5 class="mt-3 text-muted">
-                                    {{getModalAuthor}} &nbsp;&bullet;&nbsp; {{getNumComments}} comments
+                                    {{getModalAuthor}} &nbsp;&bullet;&nbsp; {{getNumComments}} comment<span v-if="getNumComments > 1">s</span>
                                 </h5>
                                 <div id="button-container" class="mt-5">
                                     <a :href="getModalURL" target="_blank">

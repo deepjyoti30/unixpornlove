@@ -100,14 +100,28 @@ var fetchTrending = new Vue({
              * One assumption made is that a particular post cannot become
              * a top post without being around for a while, so we'll 
              * assume that this method never returns a value less than 1
+             * 
+             * Assumption above is overruled since we are also calculating
+             * time difference for latest posts now.
             */
             createdTime = new Date(passedUTC * 1000)
             currentTime = new Date()
+            diffInMs = currentTime - createdTime
 
-            differenceInHours = Math.abs(currentTime - createdTime) / 36e5
+            differenceInHours = Math.abs(diffInMs) / 36e5
 
-            // Return the value in a readable format
-            return this.makeReadable(differenceInHours)
+            // If the value is greater than 0, return
+            if (differenceInHours > 0)
+                // Return the value in a readable format
+                return this.makeReadable(differenceInHours)
+
+            // Calculate the mins and accordingly return
+            differenceInMins = Math.floor(Math.abs(((diffInMs % 86400000) % 3600000) / 60000))
+
+            if (differenceInMins < 2)
+                return differenceInMins + " minute"
+            else
+                return differenceInMins + " minutes"
         },
         initSlick: function(element) {
             // Initiate the slick containers
