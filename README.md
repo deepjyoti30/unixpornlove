@@ -5,7 +5,7 @@
 1. Unzip the gz file and go to the directory
 
     ```console
-    tar -xzvf unixpornlove.tar.gz && cd unixpornlove
+    unzip unixpornlove-master.zip && cd unixpornlove
     ```
 
 2. Move to the ```frontend``` dir and run the server
