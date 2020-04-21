@@ -1,4 +1,4 @@
-.bg-flair, .bg-wokflow, .bg-screenshot {
+.bg-flair, .bg-workflow, .bg-screenshot {
   color: #000;
   padding: 4px 8px;
   border-radius: 12px;
@@ -7,7 +7,7 @@
 .bg-screenshot {
   background: #FFD54F; }
 
-.bg-wokflow {
+.bg-workflow {
   background: #FF7043; }
 
 .upvote-color, .award-color {
