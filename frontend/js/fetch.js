@@ -2,13 +2,14 @@ var fetchTrending = new Vue({
     el: "#body",
     data: {
         isLoading: true,
+        cookieName: 'current-theme',
         defaultUrl: window.location.href,
         defaultTitle: document.getElementsByTagName("title")[0].innerHTML,
         trendingPostsContainer: [],
         latestPostsContainer: [],
         topPost: null,
         userAgent: 'unixporn-love',
-        topURL: 'https://www.reddit.com/r/unixporn/top/.json?count=20',
+        topURL: 'https://www.reddit.com/r/unixporn/top/.json',
         latestURL: 'https://www.reddit.com/r/unixporn/new/.json',
         isLatestLoaded: false,
         isTopLoaded: false,
@@ -45,6 +46,7 @@ var fetchTrending = new Vue({
                     // Change the loaded to true
                     this.isTopLoaded = true
                     this.loadingComplete()
+                    this.checkTheme()
                 })
         },
         fetchLatest: function(){
@@ -336,6 +338,9 @@ var fetchTrending = new Vue({
             element.classList.add('border-light')
 
             element.setAttribute("current-mode", "dark")
+
+            // Also update the cookie with the new mode
+            this.updateCookie("dark")
         },
         toLight(element) {
             // Same function as toDark just opposite
@@ -350,6 +355,9 @@ var fetchTrending = new Vue({
             element.classList.add('border-dark')
 
             element.setAttribute("current-mode", "light")
+
+            // Also update the cookie with the new mode
+            this.updateCookie("light")
         },
         toggleDarkMode() {
             /**
@@ -376,6 +384,49 @@ var fetchTrending = new Vue({
             setTimeout(() => {
                 this.isLoading = false
             }, 3000)
+        },
+        setDefaultCookie(cookieName) {
+            // No cookie with the name current theme was found
+            // Set the cookie and set it to light.
+            Cookies.set(cookieName, 'light')
+        },
+        updateCookie(newValue) {
+            // Update the value of the cookie with the 
+            // passed value
+            Cookies.set(this.cookieName, newValue)
+        },
+        checkCookie() {
+            /**
+             * Try to see if a cookie is defined for the 
+             * theme. 
+             * 
+             * If not then create a new cookie and set it to
+             * the current default theme which is dark mode.
+             * 
+             * Update the cookies every time the theme is toggled.
+             */
+            let currentCookieTheme = Cookies.get(this.cookieName)
+
+            if (currentCookieTheme == undefined) {
+                this.setDefaultCookie(this.cookieName)
+            }
+
+            // If it is not undefined, it will be either light
+            if (currentCookieTheme == "light") {
+                // No need to do anything since it's default
+            }
+            else if (currentCookieTheme == "dark") {
+                this.toggleDarkMode()
+            }
+            else {
+                // Probably someone screwed with the cookies
+                this.setDefaultCookie(this.cookieName)
+            }
+        },
+        checkTheme() {
+            setTimeout(() => {
+                this.checkCookie()
+            }, 3500)
         }
     },
     computed: {

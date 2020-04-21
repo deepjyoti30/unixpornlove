@@ -244,6 +244,8 @@ $githubBrandColor: #333;
 
 .list-inline-item a {
     color: inherit;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
 .list-inline > .github-item {

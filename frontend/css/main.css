@@ -156,7 +156,9 @@ button {
     background: #1DA1F2 !important; }
 
 .list-inline-item a {
-  color: inherit; }
+  color: inherit;
+  padding: 0 !important;
+  margin: 0 !important; }
 
 .list-inline > .github-item {
   color: #333;
