@@ -68,7 +68,7 @@
                                 <div class="col-md-4 col-lg-4 pl-5">
                                     <div  v-if="getShowModalComment">
                                         <h1 class="py-3">
-                                            Say thanks to <a class="upvote-color" :href="'reddit.com/' + getTopPost.data.author">u/{{getTopPost.data.author}}</a> for the dots.
+                                            Say thanks to <a class="upvote-color" :href="'https://reddit.com/u/' + getTopPost.data.author">u/{{getTopPost.data.author}}</a> for the dots.
                                         </h1>
                                         <div v-html="getModalComment" class="py-4 rounded-xl bg-brighter shadow px-4 my-3" id="details-comment">
                                         </div>
