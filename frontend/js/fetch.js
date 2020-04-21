@@ -29,6 +29,17 @@ var fetchTrending = new Vue({
         modalVideoSrc: "",
     },
     methods: {
+        filterDiscussion: function(container) {
+            /**
+             * Filter all the link_flair_text with Discussion
+             */
+            let filteredContainer = []
+            container.forEach(element => {
+                if (element['data']['link_flair_text'] != 'Discussion')
+                    filteredContainer.push(element)
+            })
+            return filteredContainer
+        },
         fetchData: function() {
             // Fetch the post data from reddit
             fetch(this.topURL, {
@@ -41,7 +52,7 @@ var fetchTrending = new Vue({
                     let data = jsonData["data"]["children"]
                     this.topPost = data[0]
                     data.splice(0, 1)
-                    this.trendingPostsContainer = data
+                    this.trendingPostsContainer = this.filterDiscussion(data)
 
                     // Change the loaded to true
                     this.isTopLoaded = true
@@ -62,7 +73,7 @@ var fetchTrending = new Vue({
                 // Parse the json data
                 let data = jsonData["data"]["children"]
                 data.splice(0, 1)
-                this.latestPostsContainer = data
+                this.latestPostsContainer = this.filterDiscussion(data)
 
                 // Change to loaded
                 this.isLatestLoaded = true
