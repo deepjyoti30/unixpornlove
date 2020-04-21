@@ -19,13 +19,19 @@
 </head>
 <body>
     <section id="body">
-        <section v-if="isBodyLoading" id="body-animation">
-            <div class="loading-dots dark-gray body-center" align="center">
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
-                <i></i>
+        <section v-if="isBodyLoading" id="body-animation" class="body-center">
+            <div id="loading-header" class="text-center pt-5">
+                <h1>
+                    Loading <span class="upvote-color">r/unixporn</span> for you!
+                </h1> 
+            </div>
+            <div id="loader-container">
+                <div class='tetrominos'>
+                    <div class='tetromino box1'></div>
+                    <div class='tetromino box2'></div>
+                    <div class='tetromino box3'></div>
+                    <div class='tetromino box4'></div>
+                  </div>
             </div>
         </section>
         <section v-else id="body-container">

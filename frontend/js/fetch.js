@@ -1,7 +1,7 @@
 var fetchTrending = new Vue({
     el: "#body",
     data: {
-        isLoading: false,
+        isLoading: true,
         defaultUrl: window.location.href,
         defaultTitle: document.getElementsByTagName("title")[0].innerHTML,
         trendingPostsContainer: [],
@@ -42,6 +42,7 @@ var fetchTrending = new Vue({
 
                     // Change the loaded to true
                     this.isTopLoaded = true
+                    this.loadingComplete()
                 })
         },
         fetchLatest: function(){
@@ -67,7 +68,7 @@ var fetchTrending = new Vue({
             return (data.ups / (data.ups + data.downs) * 100)
         },
         getFullUri(permalink) {
-            return "https://www.reddit.com/" + permalink
+            return "https://www.reddit.com" + permalink
         },
         makeReadable(differenceInHours) {
             /**
@@ -88,11 +89,11 @@ var fetchTrending = new Vue({
             }
             else if (differenceInHours < 48) {
                 // Return the value in terms of day
-                return (differenceInHours / 24) + " day"
+                return Math.floor(differenceInHours / 24) + " day"
             }
             else {
                 // Probably the value is greater than 2 days
-                return (differenceInHours / 24) + " days"
+                return Math.floor(differenceInHours / 24) + " days"
             }
         },
         getDiffHours(passedUTC) {
@@ -353,6 +354,18 @@ var fetchTrending = new Vue({
                 this.toDark(darkModeBtn)
             else if (currentMode == "dark")
                 this.toLight(darkModeBtn)
+        },
+        loadingComplete() {
+            /**
+             * This method is called when the loading is done
+             * and we are ready to hide the loading animation.
+             * 
+             * Wait for a few seconds after the loading is done so that
+             * the loading animation is shown for a while at least.
+             */
+            setTimeout(() => {
+                this.isLoading = false
+            }, 5000)
         }
     },
     computed: {
@@ -420,7 +433,5 @@ var fetchTrending = new Vue({
         this.initSlick("#cards-container-trending")
         // Initialize latest posts
         this.initSlick("#cards-container-latest")
-        // Initiate the modal
-        //MicroModal.init()
     }
 })
