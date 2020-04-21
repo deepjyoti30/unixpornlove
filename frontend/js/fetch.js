@@ -23,7 +23,9 @@ var fetchTrending = new Vue({
         modalCommentsNum: "",
         modalComment: "",
         isCommentLoading: true,
-        showModalComment: false
+        showModalComment: false,
+        modalPostHint: "",
+        modalVideoSrc: "",
     },
     methods: {
         fetchData: function() {
@@ -236,7 +238,15 @@ var fetchTrending = new Vue({
             // Update the title
             let container = dataContainer[indexToShow]["data"]
             this.modalTitle = container["title"]
-            this.modalImgSrc = container["url"]
+            this.modalPostHint = container["post_hint"]
+
+            // Check if the post is a video or image and accordingly
+            // get the sources
+            if (this.modalPostHint == "image")
+                this.modalImgSrc = container["url"]
+            else if (this.modalPostHint == "hosted:video")
+                this.modalVideoSrc = container["media"]["reddit_video"]["fallback_url"]
+
             this.modalUps = container["ups"]
             this.modalHoursGone = this.getDiffHours(container["created_utc"])
             this.modalURL = this.getFullUri(container["permalink"])
@@ -365,7 +375,7 @@ var fetchTrending = new Vue({
              */
             setTimeout(() => {
                 this.isLoading = false
-            }, 5000)
+            }, 3000)
         }
     },
     computed: {
@@ -389,6 +399,12 @@ var fetchTrending = new Vue({
         },
         getModalTitle: function() {
             return this.modalTitle
+        },
+        getModalPostHint: function() {
+            return this.modalPostHint
+        },
+        getModalVideoSrc: function() {
+            return this.modalVideoSrc
         },
         getModalImg: function() {
             return this.modalImgSrc

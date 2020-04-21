@@ -1,9 +1,20 @@
-.bg-screenshot {
-  background: #FFD54F;
+
+.bg-flair {
   color: #000;
   padding: 4px 8px;
   border-radius: 12px;
-  font-size: 15px; }
+  font-size: 15px;
+}
+
+.bg-screenshot {
+  @extend .bg-flair;
+  background: #FFD54F;
+}
+
+.bg-wokflow {
+  @extend .bg-flair;
+  background: #FF7043;
+}
 
 .upvote-color, .award-color {
   color: #F44336;

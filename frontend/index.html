@@ -58,7 +58,9 @@
                         <main class="modal__content lineto-medium" id="modal-top-content">
                             <div class="row container-fluid">
                                 <div class="col-md-8 col-lg-8">
-                                    <img :src="getTopPost.data.url" alt="" class="img-fluid">
+                                    <a v-if="getTopPost.data.post_hint == 'image'" :href="getTopPost.data.url" target="_blank">
+                                        <img :src="getTopPost.data.url" alt="" class="img-fluid">
+                                    </a>
                                 </div>
                                 <div class="col-md-4 col-lg-4 pl-5">
                                     <div  v-if="getShowModalComment">
@@ -97,8 +99,11 @@
                         <main class="modal__content lineto-medium" id="modal-1-content">
                         <div class="container-fluid row">
                             <div class="col-md-8 col-lg-8">
-                                <a :href="getModalImg" target="_blank">
+                                <a v-if="getModalPostHint == 'image'" :href="getModalImg" target="_blank">
                                     <img :src="getModalImg" alt="" class="img-fluid">
+                                </a>
+                                <a v-else-if="getModalPostHint == 'hosted:video'" :href="getModalVideoSrc" target="_blank">
+                                    <video :src="getModalVideoSrc" class="img-fluid" controls></video>
                                 </a>
                             </div>
                             <div class="col-lg-4 pl-5">
@@ -149,7 +154,7 @@
                     <div class="col-md-4">
                         <h1 class="display-3">Top Post</h1>
                         <div id="card-details" class="mt-5 py-4 px-4 bg-brighter rounded-xl shadow">
-                            <span id="flair" class="bg-screenshot">
+                            <span id="flair" :class="'bg-' + getTopPost.data.link_flair_css_class">
                                 {{getTopPost.data.link_flair_text}}
                             </span>
                             <h1 id="title" class="py-3">{{getTopPost.data.title}}</h1>
@@ -176,7 +181,8 @@
                     <h1 class="display-4 pl-3">Trending Posts</h1>
                     <div class="pt-3 pl-3" id="cards-container-trending">
                         <div id="card" class="bg-brighter small-card rounded-lg shadow" v-for="(post, id) in getPosts" :key="id">
-                            <img :src="post.data.url" alt="" class="img-fluid-card rounded-top" loading="lazy">
+                            <img v-if="post.data.post_hint == 'image'" :src="post.data.url" alt="" class="img-fluid-card rounded-top" loading="lazy">
+                            <img v-else="post.data.post_hint == 'hosted:video'" :src="post.data.thumbnail" alt="" class="img-fluid-card" loading="lazy">
                             <div id="details" class="pt-4 pb-3 px-3">
                                 <h4 v-if="post.data.title.length < 33">{{post.data.title}}</h4>
                                 <h4 v-else>{{post.data.title.substring(0, 30) + ".."}}</h4>
@@ -196,7 +202,8 @@
                     <h1 class="display-4 pl-3">Latest Posts</h1>
                     <div class="pt-3 pl-3" id="cards-container-latest">
                         <div id="card" class="bg-brighter small-card rounded-lg shadow" v-for="(post, id) in getLatestPosts" :key="id">
-                            <img :src="post.data.url" alt="" class="img-fluid-card rounded-top" loading="lazy">
+                            <img v-if="post.data.post_hint == 'image'" :src="post.data.url" alt="" class="img-fluid-card rounded-top" loading="lazy">
+                            <img v-else="post.data.post_hint == 'hosted:video'" :src="post.data.thumbnail" alt="" class="img-fluid-card" loading="lazy">
                             <div id="details" class="pt-4 pb-3 px-3">
                                 <h4 v-if="post.data.title.length < 33">{{post.data.title}}</h4>
                                 <h4 v-else>{{post.data.title.substring(0, 30) + ".."}}</h4>
