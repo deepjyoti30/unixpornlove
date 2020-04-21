@@ -61,6 +61,9 @@
                                     <a v-if="getTopPost.data.post_hint == 'image'" :href="getTopPost.data.url" target="_blank">
                                         <img :src="getTopPost.data.url" alt="" class="img-fluid">
                                     </a>
+                                    <a v-else-if="getTopPost.data.post_hint == 'hosted:video'" :href="getTopPost.data.media.reddit_video.fallback_url" target="_blank">
+                                        <video :src="getTopPost.data.media.reddit_video.fallback_url" class="img-fluid" controls></video>
+                                    </a>
                                 </div>
                                 <div class="col-md-4 col-lg-4 pl-5">
                                     <div  v-if="getShowModalComment">
