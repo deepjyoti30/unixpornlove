@@ -1,17 +1,12 @@
 # Unixporn Love
 
-## Steps to run the server
+## A WebApp to view Unixporn in a better, more comprehensive way
 
-1. Unzip the gz file and go to the directory
+## Built with
 
-    ```console
-    unzip unixpornlove-master.zip && cd unixpornlove
-    ```
+1. VueJS
+2. HTML / Sass
 
-2. Move to the ```frontend``` dir and run the server
+## Thanks
 
-    ```console
-    cd frontend/ && python -m http.server 8000
-    ```
-
-3. Open the page [http://localhost:8000/](http://localhost:8000/)
+- Reddit's public API
