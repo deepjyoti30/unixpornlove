@@ -212,9 +212,6 @@ var fetchTrending = new Vue({
             this.isCommentLoading = true
             let commentsByAuthor = []
             fetch(postURL + ".json", {
-                headers: {
-                    'User-Agent': this.userAgent
-                }
             })
             .then(response => {return response.json()})
             .then(jsonData => {
