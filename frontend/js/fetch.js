@@ -43,8 +43,6 @@ var fetchTrending = new Vue({
         fetchData: function() {
             // Fetch the post data from reddit
             fetch(this.topURL, {
-                headers: {
-                    'User-Agent': this.userAgent}
                 })
                 .then(response => {return response.json()})
                 .then((jsonData) => {
@@ -64,9 +62,6 @@ var fetchTrending = new Vue({
             // Fetch the latest posts using the latestURL
 
             fetch(this.latestURL, {
-                headers: {
-                    'User-Agent': this.userAgent
-                }
             })
             .then(response => {return response.json()})
             .then(jsonData => {
