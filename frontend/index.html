@@ -108,6 +108,7 @@
                                 <a v-else-if="getModalPostHint == 'hosted:video'" :href="getModalVideoSrc" target="_blank">
                                     <video :src="getModalVideoSrc" class="img-fluid" controls></video>
                                 </a>
+                                <div v-else-if="getModalPostHint == 'rich:video'" v-html="getModalEmbedSrc"></div>
                             </div>
                             <div class="col-lg-4 pl-5">
                                 <h3 class="pb-3">
@@ -185,7 +186,7 @@
                     <div class="pt-3 pl-3" id="cards-container-trending">
                         <div id="card" class="bg-brighter small-card rounded-lg shadow" v-for="(post, id) in getPosts" :key="id">
                             <img v-if="post.data.post_hint == 'image'" :src="post.data.url" alt="" class="img-fluid-card rounded-top" loading="lazy">
-                            <img v-else="post.data.post_hint == 'hosted:video'" :src="post.data.thumbnail" alt="" class="img-fluid-card" loading="lazy">
+                            <img v-else :src="post.data.thumbnail" alt="" class="img-fluid-card" loading="lazy">
                             <div id="details" class="pt-4 pb-3 px-3">
                                 <h4 v-if="post.data.title.length < 33">{{post.data.title}}</h4>
                                 <h4 v-else>{{post.data.title.substring(0, 30) + ".."}}</h4>
@@ -206,7 +207,7 @@
                     <div class="pt-3 pl-3" id="cards-container-latest">
                         <div id="card" class="bg-brighter small-card rounded-lg shadow" v-for="(post, id) in getLatestPosts" :key="id">
                             <img v-if="post.data.post_hint == 'image'" :src="post.data.url" alt="" class="img-fluid-card rounded-top" loading="lazy">
-                            <img v-else="post.data.post_hint == 'hosted:video'" :src="post.data.thumbnail" alt="" class="img-fluid-card" loading="lazy">
+                            <img v-else :src="post.data.thumbnail" alt="" class="img-fluid-card" loading="lazy">
                             <div id="details" class="pt-4 pb-3 px-3">
                                 <h4 v-if="post.data.title.length < 33">{{post.data.title}}</h4>
                                 <h4 v-else>{{post.data.title.substring(0, 30) + ".."}}</h4>

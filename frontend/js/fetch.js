@@ -27,6 +27,7 @@ var fetchTrending = new Vue({
         showModalComment: false,
         modalPostHint: "",
         modalVideoSrc: "",
+        modalEmbedSrc: "",
     },
     methods: {
         filterDiscussion: function(container) {
@@ -266,6 +267,18 @@ var fetchTrending = new Vue({
                 this.modalImgSrc = container["url"]
             else if (this.modalPostHint == "hosted:video")
                 this.modalVideoSrc = container["media"]["reddit_video"]["fallback_url"]
+            else if (this.modalPostHint == "rich:video"){
+                let src = container["secure_media_embed"]["media_domain_url"]
+                let width = container["secure_media_embed"]["width"]
+                let height = container["secure_media_embed"]["height"]
+                this.modalEmbedSrc = '<embed src="'
+                                     + src
+                                     + '" width="'
+                                     + width
+                                     + '" height="'
+                                     + height
+                                     + '">'
+            }
 
             this.modalUps = container["ups"]
             this.modalHoursGone = this.getDiffHours(container["created_utc"])
@@ -477,6 +490,9 @@ var fetchTrending = new Vue({
         },
         getModalImg: function() {
             return this.modalImgSrc
+        },
+        getModalEmbedSrc: function() {
+            return this.modalEmbedSrc
         },
         getModalUps: function() {
             return this.modalUps
