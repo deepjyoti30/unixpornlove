@@ -48,7 +48,7 @@ var fetchTrending = new Vue({
                 .then((jsonData) => {
                     // Parse the data and store it in the container
                     let data = jsonData["data"]["children"]
-                    this.topPost = data[0]
+                    this.topPost = this.filterTopPost(data[0])
                     data.splice(0, 1)
                     this.trendingPostsContainer = this.filterDiscussion(data)
 
@@ -73,6 +73,21 @@ var fetchTrending = new Vue({
                 // Change to loaded
                 this.isLatestLoaded = true
             })
+        },
+        filterTopPost(topPost) {
+            /**
+             * Sometimes reddit just returns null for the top
+             * post flair class, this class is responsible for
+             * the color of the flair background.
+             * 
+             * In case it is null, just use the link_flair_text
+             * and update link_flair_css_class.
+             */
+            if (topPost["data"]["link_flair_css_class"] == null) {
+                // Convert the string to lower
+                topPost["data"]["link_flair_css_class"] = topPost["data"]["link_flair_text"].toLowerCase()
+            }
+            return topPost
         },
         calcPercentage(data) {
             return (data.ups / (data.ups + data.downs) * 100)
