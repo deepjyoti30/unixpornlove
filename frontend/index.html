@@ -108,7 +108,7 @@
                                 <a v-else-if="getModalPostHint == 'hosted:video'" :href="getModalVideoSrc" target="_blank">
                                     <video :src="getModalVideoSrc" class="img-fluid" controls></video>
                                 </a>
-                                <div v-else-if="getModalPostHint == 'rich:video' || (getModalPostHint == 'link')" v-html="getModalEmbedSrc"></div>
+                                <div v-else-if="getIsEmbedShowable" v-html="getModalEmbedSrc"></div>
                                 <div v-else id="fallback-img" class="my-5">
                                     <div width="100%">
                                         <h3>No preview available. It's probably a material and posted as a link.</h3>

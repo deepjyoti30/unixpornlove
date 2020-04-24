@@ -28,6 +28,8 @@ var fetchTrending = new Vue({
         modalPostHint: "",
         modalVideoSrc: "",
         modalEmbedSrc: "",
+        isModalDomainValid: false,
+        isEmbedShowable: false
     },
     methods: {
         filterDiscussion: function(container) {
@@ -260,6 +262,14 @@ var fetchTrending = new Vue({
             let container = dataContainer[indexToShow]["data"]
             this.modalTitle = container["title"]
             this.modalPostHint = container["post_hint"]
+            console.log(container["domain"] + "me" + this.isModalDomainValid)
+            if (container["domain"] == "imgur.com")
+                this.isModalDomainValid = true
+            else {
+                this.isModalDomainValid = false
+                this.isEmbedShowable = false
+            }
+            
 
             // Check if the post is a video or image and accordingly
             // get the sources
@@ -267,17 +277,21 @@ var fetchTrending = new Vue({
                 this.modalImgSrc = container["url"]
             else if (this.modalPostHint == "hosted:video")
                 this.modalVideoSrc = container["media"]["reddit_video"]["fallback_url"]
-            else if (this.modalPostHint == "rich:video" || this.modalPostHint == 'link'){
+            else if (this.modalPostHint == "rich:video" || (this.modalPostHint == 'link' && this.isModalDomainValid)){
                 let src = container["secure_media_embed"]["media_domain_url"]
                 let width = container["secure_media_embed"]["width"]
                 let height = container["secure_media_embed"]["height"]
+                let scrolling = (container["scrolling"] ? "yes" : "no")
                 this.modalEmbedSrc = '<iframe src="'
                                      + src
                                      + '" width="'
                                      + width
                                      + '" height="'
                                      + height
+                                     + '" scrolling="'
+                                     + scrolling
                                      + '">'
+                this.isEmbedShowable = true
             }
 
             this.modalUps = container["ups"]
@@ -490,6 +504,9 @@ var fetchTrending = new Vue({
         },
         getModalImg: function() {
             return this.modalImgSrc
+        },
+        getIsEmbedShowable: function() {
+            return this.isEmbedShowable
         },
         getModalEmbedSrc: function() {
             return this.modalEmbedSrc
