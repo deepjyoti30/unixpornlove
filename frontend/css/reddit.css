@@ -1,4 +1,4 @@
-.bg-flair, .bg-workflow, .bg-screenshot {
+.bg-flair, .bg-material, .bg-workflow, .bg-screenshot {
   color: #000;
   padding: 4px 8px;
   border-radius: 12px;
@@ -9,6 +9,9 @@
 
 .bg-workflow {
   background: #FF7043; }
+
+.bg-material {
+  background: #AB47BC; }
 
 .upvote-color, .award-color {
   color: orangered; }

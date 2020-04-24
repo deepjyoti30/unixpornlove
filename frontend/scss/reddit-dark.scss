@@ -16,6 +16,11 @@
   background: #FF7043;
 }
 
+.bg-material {
+  @extend .bg-flair;
+  background: #AB47BC;
+}
+
 .upvote-color, .award-color {
   color: #F44336;
 }

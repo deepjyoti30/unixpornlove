@@ -17,6 +17,11 @@
     background: #FF7043;
 }
 
+.bg-material {
+    @extend .bg-flair;
+    background: #AB47BC;
+}
+
 // Upvotes, awards etc
 
 .upvote-color {
