@@ -109,6 +109,11 @@
                                     <video :src="getModalVideoSrc" class="img-fluid" controls></video>
                                 </a>
                                 <div v-else-if="getModalPostHint == 'rich:video'" v-html="getModalEmbedSrc"></div>
+                                <div v-else id="fallback-img" class="my-5">
+                                    <div width="100%">
+                                        <h3>No preview available. It's probably a material and posted as a link.</h3>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-lg-4 pl-5">
                                 <h3 class="pb-3">
