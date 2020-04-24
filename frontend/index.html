@@ -62,7 +62,7 @@
                                         <img :src="getTopPost.data.url" alt="" class="img-fluid">
                                     </a>
                                     <a v-else-if="getTopPost.data.post_hint == 'hosted:video'" :href="getTopPost.data.media.reddit_video.fallback_url" target="_blank">
-                                        <video :src="getTopPost.data.media.reddit_video.fallback_url" class="img-fluid" controls></video>
+                                        <video :src="getTopPost.data.media.reddit_video.fallback_url" class="img-fluid" controls autoplay muted></video>
                                     </a>
                                 </div>
                                 <div class="col-md-4 col-lg-4 pl-5">
@@ -106,7 +106,7 @@
                                     <img :src="getModalImg" alt="" class="img-fluid">
                                 </a>
                                 <a v-else-if="getModalPostHint == 'hosted:video'" :href="getModalVideoSrc" target="_blank">
-                                    <video :src="getModalVideoSrc" class="img-fluid" controls></video>
+                                    <video :src="getModalVideoSrc" class="img-fluid" controls autoplay muted></video>
                                 </a>
                                 <div v-else-if="getIsEmbedShowable" v-html="getModalEmbedSrc"></div>
                                 <div v-else id="fallback-img" class="my-5">
@@ -154,7 +154,7 @@
                 <div id="top-post-container" class="row container-fluid pt-5 px-4">
                     <div id="top-post-img" class="col-md-8">
                         <img v-if="getTopPost.data.post_hint == 'image'" :src="getTopPost.data.url" alt="Top Post image" class="top-post-img rounded-xl shadow">
-                        <video v-else :src="getTopPost.data.media.reddit_video.fallback_url" class="img-fluid" controls></video>
+                        <video v-else :src="getTopPost.data.media.reddit_video.fallback_url" class="img-fluid" autoplay muted></video>
                         <div id="top-btn-container" class="mt-5">
                             <button type="button" class="btn-card-overlay btn-light shadow" @click="showTopImage()">
                                 More details
