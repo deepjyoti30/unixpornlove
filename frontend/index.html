@@ -148,7 +148,8 @@
             <section id="top-post">
                 <div id="top-post-container" class="row container-fluid pt-5 px-4">
                     <div id="top-post-img" class="col-md-8">
-                        <img :src="getTopPost.data.url" alt="Top Post image" class="top-post-img rounded-xl shadow">
+                        <img v-if="getTopPost.data.post_hint == 'image'" :src="getTopPost.data.url" alt="Top Post image" class="top-post-img rounded-xl shadow">
+                        <video v-else :src="getTopPost.data.media.reddit_video.fallback_url" class="img-fluid" controls></video>
                         <div id="top-btn-container" class="mt-5">
                             <button type="button" class="btn-card-overlay btn-light shadow" @click="showTopImage()">
                                 More details
