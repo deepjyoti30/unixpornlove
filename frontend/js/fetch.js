@@ -267,11 +267,11 @@ var fetchTrending = new Vue({
                 this.modalImgSrc = container["url"]
             else if (this.modalPostHint == "hosted:video")
                 this.modalVideoSrc = container["media"]["reddit_video"]["fallback_url"]
-            else if (this.modalPostHint == "rich:video"){
+            else if (this.modalPostHint == "rich:video" || this.modalPostHint == 'link'){
                 let src = container["secure_media_embed"]["media_domain_url"]
                 let width = container["secure_media_embed"]["width"]
                 let height = container["secure_media_embed"]["height"]
-                this.modalEmbedSrc = '<embed src="'
+                this.modalEmbedSrc = '<iframe src="'
                                      + src
                                      + '" width="'
                                      + width
